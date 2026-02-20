@@ -1,0 +1,19 @@
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: scroll 10s linear infinite;
+}
+
+.marquee-content {
+  white-space: nowrap;
+  padding: 10px 0;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
