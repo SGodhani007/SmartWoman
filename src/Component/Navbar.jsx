@@ -10,6 +10,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import Logo from "../Images/Nykaa.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [openCategory, setOpenCategory] = useState(false);
@@ -65,9 +66,11 @@ function Navbar() {
             <div className="bg-white/20 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
               <FaUser className="text-white group-hover:text-purple-900 text-sm" />
             </div>
+            <Link to="/SmartWoman/signin">
             <span className="font-medium group-hover:text-yellow-300 transition">
               Login
             </span>
+            </Link>
           </div>
 
           {/* Notification */}
@@ -107,11 +110,12 @@ function Navbar() {
 
           {/* Logo centered on mobile */}
           <div className="flex-shrink-0 mx-auto sm:mx-0">
+            <Link to={'/SmartWoman'}> 
             <img
               src={Logo}
               alt="Wholetex Logo"
               className="h-16 sm:h-20 w-auto object-contain"
-            />
+            /></Link>
           </div>
 
           {/* Search + Category */}

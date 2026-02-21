@@ -4,7 +4,8 @@ import ImageSlider from '../Component/ImageSlider'
 const Home = () => {
   return (
     <div>
-      <ImageSlider />    </div>
+      <ImageSlider />
+    </div>
   )
 }
 
