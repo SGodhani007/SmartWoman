@@ -113,7 +113,7 @@ function Navbar() {
             <Link to={'/SmartWoman'}> 
             <img
               src={Logo}
-              alt="Wholetex Logo"
+              alt=" Logo"
               className="h-16 sm:h-20 w-auto object-contain"
             /></Link>
           </div>
