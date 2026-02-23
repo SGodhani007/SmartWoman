@@ -7,6 +7,7 @@ import {
   FaUser,
   FaChevronDown,
   FaBars,
+  FaHeart,
   FaTimes,
 } from "react-icons/fa";
 import Logo from "../Images/Nykaa.png";
@@ -76,7 +77,9 @@ function Navbar() {
           {/* Notification */}
           <div className="relative cursor-pointer group">
             <div className="bg-white/20 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
-              <FaBell className="text-white group-hover:text-purple-900 text-sm" />
+              <Link to={'/wishlist'}>
+                <FaHeart className="text-white group-hover:text-purple-900 text-sm" />
+              </Link>
             </div>
             <span className="absolute -top-1 -right-1 bg-red-500 text-xs text-white w-4 h-4 flex items-center justify-center rounded-full">
               3

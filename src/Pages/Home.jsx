@@ -6,9 +6,8 @@ const Home = () => {
   return (
     <div>
       <ImageSlider />
-      <ProductGrid/>
-      <Cart/>
-      
+      <ProductGrid />
+
     </div>
   )
 }

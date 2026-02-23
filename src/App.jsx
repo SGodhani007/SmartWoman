@@ -7,6 +7,7 @@ import SingleProduct from "./Pages/SingleProduct";
 import ScrollToTop from "./assets/ScrollToTop";
 import CartPage from "./Component/Cart";
 import Checkout from "./Component/Checkout";
+import Wishlist from "./Component/Wishlist";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/single" element={<SingleProduct />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/wishlist" element={<Wishlist/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
