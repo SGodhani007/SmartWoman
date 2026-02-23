@@ -67,9 +67,9 @@ function Navbar() {
               <FaUser className="text-white group-hover:text-purple-900 text-sm" />
             </div>
             <Link to="/signin">
-            <span className="font-medium group-hover:text-yellow-300 transition">
-              Login
-            </span>
+              <span className="font-medium group-hover:text-yellow-300 transition">
+                Login
+              </span>
             </Link>
           </div>
 
@@ -86,7 +86,9 @@ function Navbar() {
           {/* Cart */}
           <div className="relative cursor-pointer group">
             <div className="bg-white/20 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
-              <FaShoppingCart className="text-white group-hover:text-purple-900 text-sm" />
+              <Link to={'/cart'}>
+                <FaShoppingCart className="text-white group-hover:text-purple-900 text-sm" />
+              </Link>
             </div>
             <span className="absolute -top-1 -right-1 bg-green-500 text-xs text-white w-4 h-4 flex items-center justify-center rounded-full">
               2
@@ -110,12 +112,12 @@ function Navbar() {
 
           {/* Logo centered on mobile */}
           <div className="flex-shrink-0 mx-auto sm:mx-0">
-            <Link to={'/SmartWoman'}> 
-            <img
-              src={Logo}
-              alt=" Logo"
-              className="h-16 sm:h-20 w-auto object-contain"
-            /></Link>
+            <Link to={'/'}>
+              <img
+                src={Logo}
+                alt=" Logo"
+                className="h-16 sm:h-20 w-auto object-contain"
+              /></Link>
           </div>
 
           {/* Search + Category */}
@@ -150,7 +152,7 @@ function Navbar() {
                 {openCategory && (
                   <div className="absolute top-12 left-0 w-full bg-white shadow-xl border rounded-md z-50">
                     <ul className="py-2 text-gray-700 max-h-48 overflow-auto">
-                      {["Women Ethnic Wear","Jewellery","Men Collection","Kids Wear","Footwear"].map((item,index)=>(
+                      {["Women Ethnic Wear", "Jewellery", "Men Collection", "Kids Wear", "Footwear"].map((item, index) => (
                         <li key={index} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">{item}</li>
                       ))}
                     </ul>

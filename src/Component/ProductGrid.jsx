@@ -15,7 +15,9 @@ export default function Products() {
 
       {/* PRODUCTS GRID */}
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4">
+        
         <ProductCard
+    
           image={saree1}
           title="ZARKAASHI DHOOP CHAV VOL 3 BANARASI SILK SAREE"
           price="10.31"
