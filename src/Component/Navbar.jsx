@@ -66,7 +66,7 @@ function Navbar() {
             <div className="bg-white/20 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
               <FaUser className="text-white group-hover:text-purple-900 text-sm" />
             </div>
-            <Link to="/SmartWoman/signin">
+            <Link to="/signin">
             <span className="font-medium group-hover:text-yellow-300 transition">
               Login
             </span>
