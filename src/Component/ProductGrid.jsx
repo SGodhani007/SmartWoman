@@ -1,8 +1,8 @@
 import React from "react";
 
 import ProductCard from "../assets/ProductCard";
-import saree1 from "../Images/Banner1.jpg";
-import saree2 from "../Images/Banner2.jpg";
+import saree1 from "../Images/P1.png";
+import saree2 from "../Images/P2.png";
 
 export default function Products() {
   return (
@@ -14,7 +14,7 @@ export default function Products() {
       </h1>
 
       {/* PRODUCTS GRID */}
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4">
         <ProductCard
           image={saree1}
           title="ZARKAASHI DHOOP CHAV VOL 3 BANARASI SILK SAREE"
