@@ -31,14 +31,14 @@ function Navbar() {
   return (
     <div className="w-full relative">
       {/* ===== TOP PURPLE BAR ===== */}
-      <div className="bg-[#3674B5] text-white text-sm px-4 sm:px-6 py-2 flex justify-between items-center flex-wrap">
+      <div className="bg-[#f2f0ed] text-sm px-4 sm:px-6 text-[#02382a] py-2 flex justify-between items-center flex-wrap">
         <div className="flex items-center gap-2 sm:gap-6 flex-wrap">
           <span className="flex items-center text-sm font-medium font-[Poppins] gap-2">
             <FaWhatsapp size={18} /> Join Whatsapp Broadcast Group
           </span>
         </div>
 
-        <div className="bg-[#3674B5] w-full sm:w-[50%] text-white overflow-hidden mt-2 sm:mt-0">
+        <div className="bg-[#f2f0ed] w-full sm:w-[50%] text-[#02382a] overflow-hidden mt-2 sm:mt-0">
           <div className="marquee">
             <div className="marquee-content">
               🚚 Free Shipping on Orders Above ₹999 &nbsp;&nbsp;&nbsp;
@@ -65,7 +65,7 @@ function Navbar() {
           {/* Login */}
           <div className="flex items-center gap-2 cursor-pointer group">
             <div className="bg-white/20 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
-              <FaUser className="text-white group-hover:text-purple-900 text-sm" />
+              <FaUser className="text-[#02382a] group-hover:text-purple-900 text-sm" />
             </div>
             <Link to="/signin">
               <span className="font-medium group-hover:text-yellow-300 transition">
@@ -76,9 +76,9 @@ function Navbar() {
 
           {/* Notification */}
           <div className="relative cursor-pointer group">
-            <div className="bg-white/20 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
+            <div className="bg-green-100 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
               <Link to={'/wishlist'}>
-                <FaHeart className="text-white group-hover:text-purple-900 text-sm" />
+                <FaHeart className="text-[#02382a] group-hover:text-purple-900 text-sm" />
               </Link>
             </div>
             <span className="absolute -top-1 -right-1 bg-red-500 text-xs text-white w-4 h-4 flex items-center justify-center rounded-full">
@@ -88,9 +88,9 @@ function Navbar() {
 
           {/* Cart */}
           <div className="relative cursor-pointer group">
-            <div className="bg-white/20 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
+            <div className="bg-green-100 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
               <Link to={'/cart'}>
-                <FaShoppingCart className="text-white group-hover:text-purple-900 text-sm" />
+                <FaShoppingCart className="text-[#02382a]  group-hover:text-purple-900 text-sm" />
               </Link>
             </div>
             <span className="absolute -top-1 -right-1 bg-green-500 text-xs text-white w-4 h-4 flex items-center justify-center rounded-full">
@@ -101,7 +101,7 @@ function Navbar() {
       </div>
 
       {/* ===== LOGO + SEARCH ===== */}
-      <div className="bg-white shadow-md">
+      <div className="bg-[#f2f0ed] shadow-md">
         <div className="flex flex-col sm:flex-row px-4 sm:px-8 py-4 gap-4 sm:gap-6 items-start sm:items-center relative">
 
           {/* Hamburger Mobile (fixed left) */}
@@ -136,7 +136,7 @@ function Navbar() {
                   placeholder="Search for products, brands..."
                   className="h-12 w-full px-4 border border-gray-300 rounded-l-md outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-400 transition"
                 />
-                <button className="h-12 bg-purple-900 text-white px-4 rounded-r-md hover:bg-purple-800 transition">
+                <button className="h-12 bg-[#02382a] text-white px-4 rounded-r-md hover:bg-green-800 transition">
                   <FaSearch />
                 </button>
               </div>
@@ -145,7 +145,7 @@ function Navbar() {
               <div className="relative w-full sm:w-1/3">
                 <button
                   onClick={() => setOpenCategory(!openCategory)}
-                  className="h-12 w-full bg-gray-600 text-white rounded-md flex items-center justify-between px-4 hover:bg-gray-700 transition"
+                  className="h-12 w-full bg-[#02382a] text-white rounded-md flex items-center justify-between px-4 hover:bg-gray-700 transition"
                 >
                   All Categories
                   <FaChevronDown className={`transition-transform duration-300 ${openCategory ? "rotate-180" : ""}`} />
@@ -167,11 +167,11 @@ function Navbar() {
             {/* Desktop menu */}
             <div className="hidden sm:block bg-gray-100 rounded-md mt-2 w-full overflow-x-auto">
               <ul className="flex gap-2 sm:gap-4 py-2 text-gray-700 font-medium items-center min-w-max whitespace-nowrap">
-                <li className="bg-purple-900 text-white px-4 py-1 rounded-md whitespace-nowrap">
+                <li className="bg-[#02382a] font-[Poppins] text-white px-4 py-1 rounded-md whitespace-nowrap">
                   HOME
                 </li>
                 {menuItems.map((item, index) => (
-                  <li key={index} className="hover:text-purple-700 cursor-pointer flex items-center gap-1 whitespace-nowrap">
+                  <li key={index} className="hover:text-green-700 cursor-pointer flex items-center gap-1 whitespace-nowrap">
                     {item}
                     {item !== "BRANDS" && <FaChevronDown size={12} />}
                   </li>
