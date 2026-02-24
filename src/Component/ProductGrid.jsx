@@ -1,23 +1,21 @@
 import React from "react";
-
 import ProductCard from "../assets/ProductCard";
 import saree1 from "../Images/P1.png";
 import saree2 from "../Images/P2.png";
 
 export default function Products() {
   return (
-    <div className="w-full px-6 md:px-10 lg:px-16 py-10">
+    <div className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-8">
       
       {/* PAGE TITLE */}
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
+      <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-6">
         Saree Collection
       </h1>
 
       {/* PRODUCTS GRID */}
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
         
         <ProductCard
-    
           image={saree1}
           title="ZARKAASHI DHOOP CHAV VOL 3 BANARASI SILK SAREE"
           price="10.31"

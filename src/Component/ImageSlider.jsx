@@ -4,32 +4,28 @@ import B2 from "../Images/Banner2.jpg";
 
 const ImageSlider = () => {
   const images = [B1, B2, B1, B2, B1];
-
-  // clone first slide for seamless loop
   const slides = [...images, images[0]];
 
   const [index, setIndex] = useState(0);
   const [transition, setTransition] = useState(true);
   const [paused, setPaused] = useState(false);
 
-  // auto slide
+  // Auto slide
   useEffect(() => {
     if (paused) return;
-
     const interval = setInterval(() => {
       setIndex((prev) => prev + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [paused]);
 
-  // reset when reaching cloned slide
+  // Seamless loop reset
   useEffect(() => {
     if (index === images.length) {
       setTimeout(() => {
         setTransition(false);
         setIndex(0);
-      }, 700); // same as transition duration
+      }, 700);
     } else {
       setTransition(true);
     }
@@ -37,7 +33,10 @@ const ImageSlider = () => {
 
   return (
     <div
-      className="relative w-full h-[75vh] -mt-4 overflow-hidden"
+      className="
+        relative w-full overflow-hidden
+        h-[38vh] sm:h-[45vh] md:h-[60vh] lg:h-[75vh]
+      "
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -50,7 +49,7 @@ const ImageSlider = () => {
         }}
       >
         {slides.map((src, i) => (
-          <div key={i} className="w-full h-[90vh] flex-shrink-0 relative">
+          <div key={i} className="w-full h-full flex-shrink-0 relative">
             <img
               src={src}
               alt={`banner-${i}`}
@@ -58,8 +57,13 @@ const ImageSlider = () => {
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-              <h2 className="text-white text-4xl md:text-6xl font-bold text-center">
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center px-4">
+              <h2
+                className="
+                  text-white font-bold text-center
+                  text-xl sm:text-2xl md:text-4xl lg:text-6xl
+                "
+              >
                 Premium Ethnic Collection
               </h2>
             </div>
@@ -68,16 +72,15 @@ const ImageSlider = () => {
       </div>
 
       {/* Dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+      <div className="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
         {images.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-3 h-3 rounded-full transition ${
-              index % images.length === i
-                ? "bg-white scale-125"
-                : "bg-white/50"
-            }`}
+            className={`rounded-full transition
+              w-2 h-2 sm:w-3 sm:h-3
+              ${index % images.length === i ? "bg-white scale-125" : "bg-white/50"}
+            `}
           />
         ))}
       </div>

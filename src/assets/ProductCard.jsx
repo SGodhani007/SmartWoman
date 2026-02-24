@@ -10,7 +10,7 @@ export default function ProductCard({ image, title, price, pcs }) {
           <img
             src={image}
             alt={title}
-            className="w-full h-[340px] object-cover transform group-hover:scale-110 transition duration-700"
+            className="w-full md:h-[340px] object-cover transform group-hover:scale-110 transition duration-700"
           />
 
           {/* SHINE EFFECT */}

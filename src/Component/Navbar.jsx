@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   FaWhatsapp,
-  FaBell,
   FaSearch,
   FaShoppingCart,
   FaUser,
@@ -29,180 +28,184 @@ function Navbar() {
   ];
 
   return (
-    <div className="w-full relative">
-      {/* ===== TOP PURPLE BAR ===== */}
-      <div className="bg-[#f2f0ed] text-sm px-4 sm:px-6 text-[#02382a] py-2 flex justify-between items-center flex-wrap">
-        <div className="flex items-center gap-2 sm:gap-6 flex-wrap">
-          <span className="flex items-center text-sm font-medium font-[Poppins] gap-2">
-            <FaWhatsapp size={18} /> Join Whatsapp Broadcast Group
-          </span>
-        </div>
+    <div className="w-full">
 
-        <div className="bg-[#f2f0ed] w-full sm:w-[50%] text-[#02382a] overflow-hidden mt-2 sm:mt-0">
-          <div className="marquee">
-            <div className="marquee-content">
-              🚚 Free Shipping on Orders Above ₹999 &nbsp;&nbsp;&nbsp;
-              💎 New Jewellery Collection Available Now &nbsp;&nbsp;&nbsp;
-              🔥 Flat 50% OFF on Selected Items &nbsp;&nbsp;&nbsp;
-            </div>
-            <div className="marquee-content">
-              🚚 Free Shipping on Orders Above ₹999 &nbsp;&nbsp;&nbsp;
-              💎 New Jewellery Collection Available Now &nbsp;&nbsp;&nbsp;
-              🔥 Flat 50% OFF on Selected Items &nbsp;&nbsp;&nbsp;
-            </div>
-          </div>
-        </div>
+      {/* ===== TOP BAR (DESKTOP ONLY) ===== */}
+      <div className="hidden sm:flex bg-[#f2f0ed] text-[#02382a] px-6 py-2 justify-between items-center text-sm">
+        <span className="flex items-center gap-2 font-medium">
+          <FaWhatsapp /> Join Whatsapp Broadcast Group
+        </span>
+        <div className="bg-[#f2f0ed] w-full sm:w-[50%] text-[#02382a] overflow-hidden mt-2 sm:mt-0"> <div className="marquee"> <div className="marquee-content"> 🚚 Free Shipping on Orders Above ₹999 &nbsp;&nbsp;&nbsp; 💎 New Jewellery Collection Available Now &nbsp;&nbsp;&nbsp; 🔥 Flat 50% OFF on Selected Items &nbsp;&nbsp;&nbsp; </div> <div className="marquee-content"> 🚚 Free Shipping on Orders Above ₹999 &nbsp;&nbsp;&nbsp; 💎 New Jewellery Collection Available Now &nbsp;&nbsp;&nbsp; 🔥 Flat 50% OFF on Selected Items &nbsp;&nbsp;&nbsp;
+        </div> </div> </div>
+        <div className="flex items-center gap-6">
+          <Link to="/signin" className="flex items-center gap-2">
+            <FaUser /> Login
+          </Link>
 
-        <div className="flex items-center gap-2 sm:gap-6 mt-2 sm:mt-0 flex-wrap">
-          {/* Currency */}
-          <div className="relative group cursor-pointer">
-            <span className="flex items-center gap-1 font-medium hover:text-yellow-300 transition">
-              CURRENCY
-              <FaChevronDown className="text-sm group-hover:rotate-180 transition duration-300" />
-            </span>
-          </div>
-
-          {/* Login */}
-          <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="bg-white/20 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
-              <FaUser className="text-[#02382a] group-hover:text-purple-900 text-sm" />
-            </div>
-            <Link to="/signin">
-              <span className="font-medium group-hover:text-yellow-300 transition">
-                Login
-              </span>
-            </Link>
-          </div>
-
-          {/* Notification */}
-          <div className="relative cursor-pointer group">
-            <div className="bg-green-100 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
-              <Link to={'/wishlist'}>
-                <FaHeart className="text-[#02382a] group-hover:text-purple-900 text-sm" />
-              </Link>
-            </div>
-            <span className="absolute -top-1 -right-1 bg-red-500 text-xs text-white w-4 h-4 flex items-center justify-center rounded-full">
+          <Link to="/wishlist" className="relative">
+            <FaHeart />
+            <span className="absolute -top-2 -right-2 text-xs bg-red-500 text-white w-4 h-4 flex items-center justify-center rounded-full">
               3
             </span>
-          </div>
+          </Link>
 
-          {/* Cart */}
-          <div className="relative cursor-pointer group">
-            <div className="bg-green-100 p-2 rounded-full group-hover:bg-yellow-400 transition duration-300">
-              <Link to={'/cart'}>
-                <FaShoppingCart className="text-[#02382a]  group-hover:text-purple-900 text-sm" />
-              </Link>
-            </div>
-            <span className="absolute -top-1 -right-1 bg-green-500 text-xs text-white w-4 h-4 flex items-center justify-center rounded-full">
+          <Link to="/cart" className="relative">
+            <FaShoppingCart />
+            <span className="absolute -top-2 -right-2 text-xs bg-green-500 text-white w-4 h-4 flex items-center justify-center rounded-full">
               2
             </span>
-          </div>
+          </Link>
         </div>
       </div>
 
-      {/* ===== LOGO + SEARCH ===== */}
-      <div className="bg-[#f2f0ed] shadow-md">
-        <div className="flex flex-col sm:flex-row px-4 sm:px-8 py-4 gap-4 sm:gap-6 items-start sm:items-center relative">
+      {/* ===== MAIN HEADER ===== */}
+      <div className="bg-[#f2f0ed] shadow-md px-4 py-3">
 
-          {/* Hamburger Mobile (fixed left) */}
+        {/* MOBILE: Hamburger + Logo */}
+        <div className="flex items-center justify-between sm:hidden">
           <button
-            onClick={() => setOpenMobileMenu(!openMobileMenu)}
-            className="sm:hidden absolute left-4 top-5 p-2 rounded border border-purple-900 text-purple-900 z-50"
-            aria-label="Toggle Menu"
+            onClick={() => setOpenMobileMenu(true)}
+            className="text-[#02382a]"
           >
-            {openMobileMenu ? <FaTimes size={24} /> : <FaBars size={24} />}
+            <FaBars size={22} />
           </button>
 
-          {/* Logo centered on mobile */}
-          <div className="flex-shrink-0 mx-auto sm:mx-0">
-            <Link to={'/'}>
-              <img
-                src={Logo}
-                alt=" Logo"
-                className="h-16 sm:h-20 w-auto object-contain"
-              /></Link>
+          <Link to={'/'}>
+            <img src={Logo} alt="Logo" className="h-12 object-contain" />
+          </Link>
+
+          <div className="flex gap-3">
+            <Link to="/wishlist">
+              <FaHeart className="text-[#02382a]" />
+            </Link>
+            <Link to="/cart">
+              <FaShoppingCart className="text-[#02382a]" />
+            </Link>
+          </div>
+        </div>
+
+        {/* MOBILE: Categories */}
+        <div className="sm:hidden mt-3">
+          <button
+            onClick={() => setOpenCategory(!openCategory)}
+            className="w-full h-11 bg-[#02382a] text-white rounded-md flex justify-between items-center px-4"
+          >
+            All Categories
+            <FaChevronDown
+              className={`transition ${openCategory ? "rotate-180" : ""}`}
+            />
+          </button>
+
+          {openCategory && (
+            <div className="bg-white border rounded-md mt-1 shadow">
+              {["Women Ethnic Wear", "Jewellery", "Men", "Kids", "Footwear"].map(
+                (item, i) => (
+                  <div
+                    key={i}
+                    className="px-4 py-2 hover:bg-gray-100 text-sm"
+                  >
+                    {item}
+                  </div>
+                )
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* MOBILE: Search */}
+        <div className="sm:hidden mt-3 flex">
+          <input
+            type="text"
+            placeholder="Search products..."
+            className="flex-1 h-11 px-4 border border-gray-300 rounded-l-md outline-none"
+          />
+          <button className="bg-[#02382a] text-white px-4 rounded-r-md">
+            <FaSearch />
+          </button>
+        </div>
+
+        {/* ===== DESKTOP HEADER ===== */}
+        <div className="hidden sm:flex items-center gap-6">
+
+          <Link to={'/'}>
+            <img src={Logo} alt="Logo" className="h-16 object-contain" />
+          </Link>
+
+          {/* Search */}
+          <div className="flex flex-1">
+            <input
+              type="text"
+              placeholder="Search for products, brands..."
+              className="h-12 w-full px-4 border border-gray-300 rounded-l-md"
+            />
+            <button className="bg-[#02382a] text-white px-5 rounded-r-md">
+              <FaSearch />
+            </button>
           </div>
 
-          {/* Search + Category */}
-          <div className="flex flex-col flex-1 gap-2 w-full mt-4 sm:mt-0">
+          {/* Category */}
+          <div className="relative w-60">
+            <button
+              onClick={() => setOpenCategory(!openCategory)}
+              className="h-12 w-full bg-[#02382a] text-white rounded-md flex justify-between items-center px-4"
+            >
+              All Categories
+              <FaChevronDown />
+            </button>
 
-            {/* Top Row: Search + Category */}
-            <div className="flex flex-col sm:flex-row gap-2 w-full">
-
-              {/* Search Bar */}
-              <div className="flex flex-1">
-                <input
-                  type="text"
-                  placeholder="Search for products, brands..."
-                  className="h-12 w-full px-4 border border-gray-300 rounded-l-md outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-400 transition"
-                />
-                <button className="h-12 bg-[#02382a] text-white px-4 rounded-r-md hover:bg-green-800 transition">
-                  <FaSearch />
-                </button>
-              </div>
-
-              {/* Category Button */}
-              <div className="relative w-full sm:w-1/3">
-                <button
-                  onClick={() => setOpenCategory(!openCategory)}
-                  className="h-12 w-full bg-[#02382a] text-white rounded-md flex items-center justify-between px-4 hover:bg-gray-700 transition"
-                >
-                  All Categories
-                  <FaChevronDown className={`transition-transform duration-300 ${openCategory ? "rotate-180" : ""}`} />
-                </button>
-
-                {/* CATEGORY DROPDOWN */}
-                {openCategory && (
-                  <div className="absolute top-12 left-0 w-full bg-white shadow-xl border rounded-md z-50">
-                    <ul className="py-2 text-gray-700 max-h-48 overflow-auto">
-                      {["Women Ethnic Wear", "Jewellery", "Men Collection", "Kids Wear", "Footwear"].map((item, index) => (
-                        <li key={index} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">{item}</li>
-                      ))}
-                    </ul>
-                  </div>
+            {openCategory && (
+              <div className="absolute top-12 w-full bg-white border rounded shadow">
+                {["Women Ethnic Wear", "Jewellery", "Men", "Kids", "Footwear"].map(
+                  (item, i) => (
+                    <div key={i} className="px-4 py-2 hover:bg-gray-100">
+                      {item}
+                    </div>
+                  )
                 )}
               </div>
-            </div>
-
-            {/* Desktop menu */}
-            <div className="hidden sm:block bg-gray-100 rounded-md mt-2 w-full overflow-x-auto">
-              <ul className="flex gap-2 sm:gap-4 py-2 text-gray-700 font-medium items-center min-w-max whitespace-nowrap">
-                <li className="bg-[#02382a] font-[Poppins] text-white px-4 py-1 rounded-md whitespace-nowrap">
-                  HOME
-                </li>
-                {menuItems.map((item, index) => (
-                  <li key={index} className="hover:text-green-700 cursor-pointer flex items-center gap-1 whitespace-nowrap">
-                    {item}
-                    {item !== "BRANDS" && <FaChevronDown size={12} />}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            )}
           </div>
+        </div>
+
+        {/* ===== DESKTOP MENU ===== */}
+        <div className="hidden sm:flex gap-6 mt-3 text-sm font-medium text-gray-700">
+          <span className="text-[#02382a] font-semibold">HOME</span>
+          {menuItems.map((item, i) => (
+            <span key={i} className="cursor-pointer hover:text-[#02382a]">
+              {item}
+            </span>
+          ))}
         </div>
       </div>
 
-      {/* Mobile Slide-in Menu */}
+      {/* ===== MOBILE SLIDE MENU ===== */}
       {openMobileMenu && (
         <>
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            className="fixed inset-0 bg-black/40 z-40"
             onClick={() => setOpenMobileMenu(false)}
-          ></div>
-          <nav className="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 p-6 overflow-y-auto transition-transform transform duration-300 ease-in-out">
-            <ul className="space-y-4 font-medium text-gray-800">
-              <li className="border-b pb-2 cursor-pointer hover:text-purple-700">HOME</li>
-              {menuItems.map((item, idx) => (
-                <li
-                  key={idx}
-                  className="border-b pb-2 cursor-pointer hover:text-purple-700"
-                >
-                  {item}
-                </li>
+          />
+
+          <div className="fixed top-0 left-0 w-72 h-full bg-white z-50 shadow-lg p-6">
+            <div className="flex justify-between items-center mb-6">
+              <Link to={'/'}><img src={Logo} alt="Logo" className="h-10" /></Link>
+
+              <FaTimes
+                className="cursor-pointer"
+                onClick={() => setOpenMobileMenu(false)}
+              />
+            </div>
+
+            <ul className="space-y-4 text-gray-800 font-medium">
+              <li>HOME</li>
+              {menuItems.map((item, i) => (
+                <li key={i}>{item}</li>
               ))}
-              <li className="cursor-pointer hover:text-purple-700">BRANDS</li>
+              <li>Login</li>
+              <li>Wishlist</li>
+              <li>Cart</li>
             </ul>
-          </nav>
+          </div>
         </>
       )}
     </div>
