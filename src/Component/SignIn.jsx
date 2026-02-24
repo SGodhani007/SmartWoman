@@ -4,13 +4,18 @@ import B1 from "../Images/login-model.jpg";
 
 export default function AuthSplit() {
   const [mode, setMode] = useState("login"); // login | otp | register
-
   const isLoginSide = mode === "login" || mode === "otp";
 
   return (
-    <div className="w-full h-screen flex items-center justify-center">
-      <div className="w-[1100px] h-[600px] bg-white rounded-xl overflow-hidden flex relative">
-
+    <div className="w-full min-h-screen flex items-center justify-center bg-[#f6f6f6] px-4 py-6">
+      <div
+        className="
+          w-full max-w-6xl
+          bg-white rounded-xl overflow-hidden
+          flex flex-col lg:flex-row
+          relative
+        "
+      >
         {/* IMAGE */}
         <AnimatePresence mode="wait">
           {isLoginSide ? (
@@ -20,9 +25,16 @@ export default function AuthSplit() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 200, opacity: 0 }}
               transition={{ duration: 0.6 }}
-              className="w-1/2 h-full"
+              className="
+                w-full lg:w-1/2
+                h-52 sm:h-64 md:h-80 lg:h-auto
+              "
             >
-              <img src={B1} alt="" className="w-full h-full object-cover" />
+              <img
+                src={B1}
+                alt=""
+                className="w-full h-full object-cover"
+              />
             </motion.div>
           ) : (
             <motion.div
@@ -31,17 +43,30 @@ export default function AuthSplit() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -200, opacity: 0 }}
               transition={{ duration: 0.6 }}
-              className="w-1/2 h-full order-1"
+              className="
+                w-full lg:w-1/2
+                h-52 sm:h-64 md:h-80 lg:h-auto
+                order-1
+              "
             >
-              <img src={B1} alt="" className="w-full h-full object-cover" />
+              <img
+                src={B1}
+                alt=""
+                className="w-full h-full object-cover"
+              />
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* FORM */}
-        <div className="w-1/2 h-full flex items-center justify-center p-10">
+        <div
+          className="
+            w-full lg:w-1/2
+            flex items-center justify-center
+            p-6 sm:p-8 md:p-10
+          "
+        >
           <AnimatePresence mode="wait">
-
             {/* LOGIN */}
             {mode === "login" && (
               <motion.div
@@ -52,8 +77,10 @@ export default function AuthSplit() {
                 transition={{ duration: 0.6 }}
                 className="w-full max-w-md"
               >
-                <h2 className="text-3xl font-semibold mb-2">Sign in</h2>
-                <p className="text-gray-500 mb-6">
+                <h2 className="text-2xl sm:text-3xl font-semibold mb-2">
+                  Sign in
+                </h2>
+                <p className="text-gray-500 mb-6 text-sm sm:text-base">
                   Sign in if you have an account in here
                 </p>
 
@@ -77,7 +104,6 @@ export default function AuthSplit() {
                   SIGN IN
                 </button>
 
-                {/* OTP LINK */}
                 <p className="text-center text-sm text-gray-500 mt-4">
                   Login with{" "}
                   <span
@@ -88,7 +114,6 @@ export default function AuthSplit() {
                   </span>
                 </p>
 
-                {/* REGISTER */}
                 <p className="text-center text-sm text-gray-500 mt-2">
                   Not a member?{" "}
                   <span
@@ -101,7 +126,7 @@ export default function AuthSplit() {
               </motion.div>
             )}
 
-            {/* OTP LOGIN */}
+            {/* OTP */}
             {mode === "otp" && (
               <motion.div
                 key="otp-form"
@@ -111,8 +136,10 @@ export default function AuthSplit() {
                 transition={{ duration: 0.6 }}
                 className="w-full max-w-md"
               >
-                <h2 className="text-3xl font-semibold mb-2">OTP Login</h2>
-                <p className="text-gray-500 mb-6">
+                <h2 className="text-2xl sm:text-3xl font-semibold mb-2">
+                  OTP Login
+                </h2>
+                <p className="text-gray-500 mb-6 text-sm sm:text-base">
                   Enter your mobile to receive OTP
                 </p>
 
@@ -136,7 +163,6 @@ export default function AuthSplit() {
                   Verify OTP
                 </button>
 
-                {/* BACK TO EMAIL */}
                 <p className="text-center text-sm text-gray-500 mt-4">
                   Login with{" "}
                   <span
@@ -147,7 +173,6 @@ export default function AuthSplit() {
                   </span>
                 </p>
 
-                {/* REGISTER */}
                 <p className="text-center text-sm text-gray-500 mt-2">
                   Not a member?{" "}
                   <span
@@ -170,8 +195,10 @@ export default function AuthSplit() {
                 transition={{ duration: 0.6 }}
                 className="w-full max-w-md"
               >
-                <h2 className="text-3xl font-semibold mb-2">Register</h2>
-                <p className="text-gray-500 mb-6">
+                <h2 className="text-2xl sm:text-3xl font-semibold mb-2">
+                  Register
+                </h2>
+                <p className="text-gray-500 mb-6 text-sm sm:text-base">
                   Create your new account
                 </p>
 
@@ -208,7 +235,6 @@ export default function AuthSplit() {
                 </p>
               </motion.div>
             )}
-
           </AnimatePresence>
         </div>
       </div>
