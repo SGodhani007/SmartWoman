@@ -23,7 +23,7 @@ export default function SingleProduct() {
         <div className="flex flex-col lg:flex-row gap-3">
 
           {/* MAIN IMAGE */}
-          <div className=" bg-red-200 rounded-xl shadow flex items-center justify-center order-1 lg:order-2">
+          <div className="  rounded-xl shadow flex items-center justify-center order-1 lg:order-2">
             <AnimatePresence mode="wait">
               <motion.img
                 key={active}

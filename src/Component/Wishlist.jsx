@@ -35,60 +35,81 @@ export default function Wishlist() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-          <Heart className="text-red-500" /> My Wishlist
+    <div className="min-h-screen font-[Poppins] bg-gray-50 py-6 sm:py-8 md:py-10 px-3 sm:px-4">
+      <div className="max-w-6xl p-5 mx-auto">
+        
+        {/* TITLE */}
+        <h1 className="text-2xl md:text-3xl font-semibold mb-4 sm:mb-6 flex items-center gap-2">
+          <Heart className="text-red-500" size={26} />
+          My Wishlist
         </h1>
+        <br />
 
         {wishlist.length === 0 ? (
-          <div className="text-center py-20 text-gray-500">
+          <div className="text-center py-16 text-gray-500 text-sm sm:text-base">
             Your wishlist is empty ❤️
           </div>
         ) : (
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {wishlist.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden group"
+                className="
+                  bg-white rounded-xl shadow-sm hover:shadow-lg
+                  transition overflow-hidden
+                  flex flex-col
+                "
               >
                 {/* IMAGE */}
                 <div className="relative">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition duration-500"
+                    className="w-full h-48 md:h-60 lg:h-64 object-cover"
                   />
 
-                  {/* REMOVE */}
                   <button
                     onClick={() => removeItem(item.id)}
-                    className="absolute top-3 right-3 bg-white p-2 rounded-full shadow hover:bg-red-50"
+                    className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-50"
                   >
-                    <Trash2 size={18} className="text-red-500" />
+                    <Trash2 size={16} className="text-red-500" />
                   </button>
                 </div>
 
-                {/* INFO */}
-                <div className="p-4 space-y-2">
-                  <p className="text-sm font-medium text-gray-800 line-clamp-2">
-                    {item.name}
-                  </p>
+                {/* CONTENT */}
+                <div className="flex flex-col flex-1 p-3 sm:p-4">
+                  
+                  {/* TEXT AREA */}
+                  <div>
+                    <p className="text-sm font-medium text-gray-800 line-clamp-2">
+                      {item.name}
+                    </p>
 
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-lg text-purple-900">
+                    <span className="font-semibold text-base sm:text-lg text-purple-900 block mt-1">
                       ₹{item.price}
                     </span>
                   </div>
 
-                  {/* ACTION */}
-                  <button
-                    onClick={() => moveToCart(item)}
-                    className="w-full mt-3 bg-purple-900 hover:bg-purple-800 text-white py-2 rounded-lg flex items-center justify-center gap-2 transition"
-                  >
-                    <ShoppingCart size={18} />
-                    Move to Cart
-                  </button>
+                  {/* BUTTON AREA (push bottom) */}
+                  <div className="mt-auto pt-3">
+                    <button
+                      onClick={() => moveToCart(item)}
+                      className="
+                        w-full
+                        bg-purple-900 hover:bg-purple-800
+                        text-white
+                        py-2
+                        rounded-lg
+                        flex items-center justify-center gap-2
+                        text-sm sm:text-base
+                        transition
+                      "
+                    >
+                      <ShoppingCart size={18} />
+                      Move to Cart
+                    </button>
+                  </div>
+
                 </div>
               </div>
             ))}
