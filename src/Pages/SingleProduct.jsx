@@ -16,7 +16,7 @@ export default function SingleProduct() {
   const [size, setSize] = useState("M");
 
   return (
-    <div className=" bg-[#f6f6f6] py-6 sm:py-10">
+    <div className=" bg-[#f6f6f6] font-[Poppins] py-6 sm:py-10">
       <div className=" grid lg:grid-cols-2 gap-8 px-3 sm:px-6">
 
         {/* ===== LEFT GALLERY ===== */}
@@ -135,7 +135,7 @@ export default function SingleProduct() {
           {/* QTY + ACTIONS */}
           <div className="flex flex-wrap items-center gap-4">
 
-            <div className="flex border rounded overflow-hidden">
+            <div className="flex shadow text-lg rounded-full overflow-hidden">
               <button
                 onClick={() => setQty(qty > 1 ? qty - 1 : 1)}
                 className="px-3 py-2 bg-gray-100"
@@ -145,7 +145,7 @@ export default function SingleProduct() {
               <div className="px-4 py-2">{qty}</div>
               <button
                 onClick={() => setQty(qty + 1)}
-                className="px-3 py-2 bg-gray-100"
+                className="px-3 py-2  rounded-full"
               >
                 +
               </button>
@@ -160,7 +160,7 @@ export default function SingleProduct() {
             </button>
           </div>
 
-          <div className="border rounded-lg p-4 space-y-2 text-sm bg-white">
+          <div className="shadow rounded-lg p-4 space-y-2 text-sm bg-white">
             <div className="flex items-center gap-2">
               🚚 <span>Free Delivery</span>
             </div>

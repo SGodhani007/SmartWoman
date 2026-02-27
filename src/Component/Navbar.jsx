@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   FaWhatsapp,
   FaSearch,
@@ -11,8 +11,23 @@ import {
 } from "react-icons/fa";
 import Logo from "../Images/Nykaa.png";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
+import { use } from "react";
 function Navbar() {
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) setUser(JSON.parse(storedUser));
+
+    const syncUser = () => {
+      const updated = localStorage.getItem("user");
+      setUser(updated ? JSON.parse(updated) : null);
+    };
+
+    window.addEventListener("storage", syncUser);
+    return () => window.removeEventListener("storage", syncUser);
+  }, []);
+  // const user = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(null);
   const [openCategory, setOpenCategory] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
@@ -27,6 +42,37 @@ function Navbar() {
     "BRANDS",
   ];
 
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
+  useEffect(() => {
+    fetchCategories();
+  })
+
+  const fetchCategories = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/categories");
+      setCategories(res.data.data);
+    } catch (error) {
+      console.log("Error fetching categories:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchSubcategories();
+  }, []);
+
+  const fetchSubcategories = async () => {
+    try {
+      // Replace with your API endpoint to fetch all subcategories
+      const res = await axios.get("http://localhost:5000/api/subcategories");
+      setSubcategories(res.data.data);
+    } catch (error) {
+      console.log("Error fetching subcategories:", error);
+    }
+  };
+
+
+
   return (
     <div className="w-full">
 
@@ -35,12 +81,18 @@ function Navbar() {
         <span className="flex items-center gap-2 font-medium">
           <FaWhatsapp /> Join Whatsapp Broadcast Group
         </span>
-        <div className="bg-[#f2f0ed] w-full sm:w-[50%] text-[#02382a] overflow-hidden mt-2 sm:mt-0"> <div className="marquee"> <div className="marquee-content"> 🚚 Free Shipping on Orders Above ₹999 &nbsp;&nbsp;&nbsp; 💎 New Jewellery Collection Available Now &nbsp;&nbsp;&nbsp; 🔥 Flat 50% OFF on Selected Items &nbsp;&nbsp;&nbsp; </div> <div className="marquee-content"> 🚚 Free Shipping on Orders Above ₹999 &nbsp;&nbsp;&nbsp; 💎 New Jewellery Collection Available Now &nbsp;&nbsp;&nbsp; 🔥 Flat 50% OFF on Selected Items &nbsp;&nbsp;&nbsp;
-        </div> </div> </div>
+
+
         <div className="flex items-center gap-6">
-          <Link to="/signin" className="flex items-center gap-2">
-            <FaUser /> Login
-          </Link>
+          {user ? (
+            <Link to="/account" className="flex items-center gap-2">
+              <FaUser /> Account
+            </Link>
+          ) : (
+            <Link to="/signin" className="flex items-center gap-2">
+              <FaUser /> Login
+            </Link>
+          )}
 
           <Link to="/wishlist" className="relative">
             <FaHeart />
@@ -88,7 +140,7 @@ function Navbar() {
         <div className="sm:hidden mt-3">
           <button
             onClick={() => setOpenCategory(!openCategory)}
-            className="w-full h-11 bg-[#02382a] text-white rounded-md flex justify-between items-center px-4"
+            className="w-full h-11 bg-[#02382a] text-white rounded-md flex-1 flex justify-between items-center px-4"
           >
             All Categories
             <FaChevronDown
@@ -98,7 +150,7 @@ function Navbar() {
 
           {openCategory && (
             <div className="bg-white border rounded-md mt-1 shadow">
-              {["Women Ethnic Wear", "Jewellery", "Men", "Kids", "Footwear"].map(
+              {/* {["Women Ethnic Wear", "Jewellery", "Men", "Kids", "Footwear"].map(
                 (item, i) => (
                   <div
                     key={i}
@@ -107,6 +159,20 @@ function Navbar() {
                     {item}
                   </div>
                 )
+              )} */}
+              {subcategories.length > 0 ? (
+                subcategories.map((sub) => (
+                  <div
+                    key={sub.id || sub._id}
+                    className="px-4 py-2 hover:bg-gray-100 text-sm"
+                  >
+                    {sub.name}
+                  </div>
+                ))
+              ) : (
+                <div className="px-4 py-2 text-sm text-gray-500">
+                  No subcategories found
+                </div>
               )}
             </div>
           )}
@@ -154,25 +220,46 @@ function Navbar() {
             </button>
 
             {openCategory && (
-              <div className="absolute top-12 w-full bg-white border rounded shadow">
-                {["Women Ethnic Wear", "Jewellery", "Men", "Kids", "Footwear"].map(
-                  (item, i) => (
-                    <div key={i} className="px-4 py-2 hover:bg-gray-100">
-                      {item}
+              <div className="absolute top-12 left-0 w-full bg-white border rounded shadow z-50">
+                {/* {["Women Ethnic Wear", "Jewellery", "Men", "Kids", "Footwear"].map(
+                    (item, i) => (
+                      <div
+                        key={i}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                      >
+                        {item}
+                      </div>
+                    )
+                  )} */}
+                {/*  */}
+                {subcategories.length > 0 ? (
+                  subcategories.map((sub) => (
+                    <div
+                      key={sub.id || sub._id}
+                      className="px-4 py-2 hover:bg-gray-100 text-sm"
+                    >
+                      {sub.name}
                     </div>
-                  )
+                  ))
+                ) : (
+                  <div className="px-4 py-2 text-sm text-gray-500">No subcategories found</div>
                 )}
+                {/*  */}
               </div>
             )}
-          </div>
-        </div>
+          </div></div>
 
         {/* ===== DESKTOP MENU ===== */}
         <div className="hidden sm:flex gap-6 mt-3 text-sm font-medium text-gray-700">
           <span className="text-[#02382a] font-semibold">HOME</span>
-          {menuItems.map((item, i) => (
+          {/* {menuItems.map((item, i) => (
             <span key={i} className="cursor-pointer hover:text-[#02382a]">
               {item}
+            </span>
+          ))} */}
+          {categories.map((item, i) => (
+            <span key={i} className="cursor-pointer hover:text-[#02382a]">
+              {item.name}
             </span>
           ))}
         </div>
@@ -198,10 +285,19 @@ function Navbar() {
 
             <ul className="space-y-4 text-gray-800 font-medium">
               <li>HOME</li>
-              {menuItems.map((item, i) => (
-                <li key={i}>{item}</li>
+              {categories.map((item, i) => (
+                <li key={i}>{item.name}</li>
               ))}
-              <li>Login</li>
+              {/* <li>Login</li> */}
+              {user ? (
+                <li>
+                  <Link to="/account">Account</Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to="/signin">Login</Link>
+                </li>
+              )}
               <li>Wishlist</li>
               <li>Cart</li>
             </ul>

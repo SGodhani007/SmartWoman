@@ -8,6 +8,7 @@ import ScrollToTop from "./assets/ScrollToTop";
 import CartPage from "./Component/Cart";
 import Checkout from "./Component/Checkout";
 import Wishlist from "./Component/Wishlist";
+import Account from "./Pages/Account";
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout/>}/>
         <Route path="/wishlist" element={<Wishlist/>}/>
+        <Route path="/account" element={<Account/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

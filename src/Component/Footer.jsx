@@ -50,10 +50,10 @@ const Footer = () => {
               <p className="text-sm font-medium">FOR INQUIRY</p>
 
               <p className="flex items-center gap-2">
-                📞 9327773330
+                📞 7069904307
               </p>
               <p className="flex items-center gap-2">
-                📞 9327773330
+                📞 8200727309
               </p>
               <p className="flex items-center gap-2">
                 ✉️ info@smartwoman.com
